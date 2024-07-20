@@ -10,6 +10,7 @@ import PrivateRoute from './router/PrivateRouter'
 import Profile from './components/Profile'
 import Books from './components/Books'
 import Author from './components/Author'
+import Community from './components/Community'
 
 function App () {
   return (
@@ -24,6 +25,7 @@ function App () {
             <Route path='/register' element={<Register />} />
             <Route path='/books/:bookId' element={<Books />} />
             <Route path='/authors/:authorId' element={<Author />} />
+            <Route path='/auhtors/:authorId/community' element={<Community />} />
             <Route path='*' element={<ErrorPage />} />
             <Route element={<PrivateRoute />}>
               <Route path='profile' element={<Profile />} />

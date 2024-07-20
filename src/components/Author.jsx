@@ -51,6 +51,15 @@ const Author = () => {
                   </div>
                 </div>
 
+                <div className='media-right'>
+                  <Link
+                    className='button is-link'
+                    to={`/authors/${authorId}/community`}
+                  >
+                    ir a la Comunidad
+                  </Link>
+                </div>
+
                 <div className='content'>
                   <nav className='panel is-info'>
                     <p className='panel-heading'>Libros</p>
