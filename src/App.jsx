@@ -9,6 +9,7 @@ import AuthProvider from './context/AuthContext'
 import PrivateRoute from './router/PrivateRouter'
 import Profile from './components/Profile'
 import Books from './components/Books'
+import Author from './components/Author'
 
 function App () {
   return (
@@ -22,6 +23,7 @@ function App () {
             <Route path='/Login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/books/:bookId' element={<Books />} />
+            <Route path='/authors/:authorId' element={<Author />} />
             <Route path='*' element={<ErrorPage />} />
             <Route element={<PrivateRoute />}>
               <Route path='profile' element={<Profile />} />

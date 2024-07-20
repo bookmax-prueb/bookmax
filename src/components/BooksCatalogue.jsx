@@ -94,7 +94,9 @@ const BooksCatalogue = () => {
                         <Link to={`/books/${book._id}`}>
                           <h3 className='subtitle is-3'>{book.title}</h3>
                         </Link>
-                        <h5 className='subtitle is-5'>{`${book.author.firstName} ${book.author.lastName}`}</h5>
+                        <Link to={`/authors/${book.author._id}`}>
+                          <h5 className='subtitle is-5'>{`${book.author.firstName} ${book.author.lastName}`}</h5>
+                        </Link>
                         <span className='tag is-link'>Score: {book.score}</span>
                         <span className='tag is-info'>{book.genre}</span>
                       </div>
