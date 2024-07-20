@@ -1,5 +1,3 @@
-
-
 const AuthorsCatalogue = () => {
   return (
     <div>AuthorsCatalogue</div>

@@ -7,11 +7,12 @@ const BooksCatalogue = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [pages, setPages] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await api.get(`/books?offset=${currentPage}`)
+        const { data } = await api.get(`/books?offset=${(currentPage - 1) * 10}&searchTerm=${query}`)
         const { paginationInfo } = data
         setBooks(data.books)
         setTotalPages(paginationInfo.totalPages)
@@ -26,7 +27,7 @@ const BooksCatalogue = () => {
       }
     }
     getData()
-  }, [currentPage])
+  }, [currentPage, query])
 
   const handleNext = () => {
     if (currentPage < totalPages) {
@@ -44,11 +45,38 @@ const BooksCatalogue = () => {
     setCurrentPage(newPage)
   }
 
+  const handleChangeQuery = (e) => {
+    setQuery(e.target.value)
+  }
+
+  const handleQueryButton = () => { }
+
   return (
     <>
       <div className='section'>
         <div className='container'>
-          <div className='fixed-grid has-5-cols'>
+          <div className='field has-addons'>
+            <div className='control is-expanded'>
+              <div className='is-fullwisth'>
+                <input
+                  className='input is-large is-rounded'
+                  type='text'
+                  placeholder='search by title and genre...'
+                  onChange={handleChangeQuery}
+                  value={query}
+                />
+              </div>
+            </div>
+            <div className='control'>
+              <button
+                className='button is-primary is-large is-rounded'
+                type='submit'
+                onClick={handleQueryButton}
+              > Buscar
+              </button>
+            </div>
+          </div>
+          <div className='fixed-grid has-5-cols mt-6'>
             <div className='grid is-gap-5'>
               {books.map((book) => (
                 <div key={book.id} className='cell'>
